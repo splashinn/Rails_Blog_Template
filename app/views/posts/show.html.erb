@@ -1,0 +1,61 @@
+<div class="row">
+
+  <div class="col-sm-3">
+    <div id="all-tags">
+      <% @tags.each do |tag| %>
+        <% if tag.posts.length > 0 %>
+          <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div id="post">
+      <h3><%= @post[:title] %></h3>
+      <div id="tagline"><em><%= @post[:tagline] %></em></div>
+
+      <% month = @post[:created_at].month %>
+      <% day = @post[:created_at].day %>
+      <% year =  @post[:created_at].year %>
+
+      <div id="post-date"><%= month %>.<%= day %>.<%= year %></div>
+      <img src="<%= @post[:image] %>">
+      <div id="content"><%= @post[:content] %></div>
+
+      <div class="row">
+        <div class="col-xs-6" id="left-footer">
+          <p>Post by: <a href="#"><%= @post[:author] %></a></p>
+          <p id="post-tags">
+            Tags:
+            <% @post.tags.each do |tag| %>
+              <a href="/tags/<%= tag[:id] %>">#<%= tag.name %></a>
+            <% end %>
+          </p>
+        </div>
+
+        <div class="col-xs-6" id="right-footer">
+          <p><a href="/posts/<%= @post[:id] %>/edit">Edit Post</a></p>
+          <p><a href="/posts/<%= @post[:id] %>/comments/new">Add a Comment</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div id ="comments">
+      <% if @post.comments.length > 0 %>
+        <h4><a href="/posts/<%= @post[:id] %>/comments">Comments about <%= @post[:title] %></a></h4>
+        <% @post.comments.each do |comment| %>
+          <div id="comment-content">
+            <h5><a href="/posts/<%= @post[:id] %>/comments/<%= comment[:id] %>"><%= comment[:title] %></a></h5>
+            <p><em><%= comment[:body] %></em></p>
+            <p><small>Comment by: <a href="#"><%= comment[:author] %></a></small></p>
+          </div>
+        <% end %>
+      <% end %> 
+    </div>
+
+  </div>
+
+  <div class="col-sm-3"></div>
+
+</div>

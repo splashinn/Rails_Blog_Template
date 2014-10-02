@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Template</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="row" id="header">
+    <div class="col-sm-12">
+      <div id="logo"></div>
+      <div id="nav">
+        <div><a href="/">HOME</a></div>
+        <div><a href="/posts/new">NEW</a></div>
+        <div><a href="#">ABOUT</a></div>
+        <div><a href="#">CONTACT</a></div>
+      </div>
+    </div>
+  </div>
+
+  <%= yield %>
+
+  <div class="row" id="footer">
+    <div class="col-sm-12">
+  </div>
+
+</body>
+</html>
